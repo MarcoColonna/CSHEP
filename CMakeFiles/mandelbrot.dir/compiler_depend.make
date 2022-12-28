@@ -593,20 +593,8 @@ CMakeFiles/mandelbrot.dir/main.cpp.o: main.cpp \
   /usr/include/oneapi/tbb/task_scheduler_observer.h \
   /usr/include/oneapi/tbb/tbb_allocator.h \
   /usr/include/oneapi/tbb/tick_count.h \
-  /usr/include/oneapi/tbb/version.h \
-  /usr/include/c++/11/fstream \
-  /usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h \
-  /usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h \
-  /usr/include/c++/11/bits/fstream.tcc
+  /usr/include/oneapi/tbb/version.h
 
-
-/usr/include/c++/11/bits/fstream.tcc:
-
-/usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h:
-
-/usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h:
-
-/usr/include/c++/11/fstream:
 
 /usr/include/oneapi/tbb/tick_count.h:
 

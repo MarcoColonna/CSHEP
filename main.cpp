@@ -45,31 +45,43 @@ int main()
 
   sf::Image image;
   image.create(window.getSize().x, window.getSize().y);
+
+    // Set up an array of granularity values to test
+  int granularities[] = {1, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200};
+
+  // Create a vector to store the elapsed times for each granularity
+  std::vector<std::pair<int, long long>> elapsed_times;
+
+  for (int granularity : granularities) {
+    auto start = std::chrono::high_resolution_clock::now();
+    tbb::parallel_for(0, display_height - granularity + 1, granularity, [&](int row) {
+      // Process rows [row, row + granularity)
+      for (int r = row; r < row + granularity; ++r) {
+        for (int column = 0; column != display_width; ++column) {
+          auto k = mandelbrot(top_left + Complex{delta_x * column, delta_y * r});
+          image.setPixel(column, r, to_color(k));
+        }
+      }
+    });
   
-  // Open a file for writing
-  std::ofstream out("mandelbrot.txt");
+    auto stop = std::chrono::high_resolution_clock::now();
+    auto elapsed_time = std::chrono::duration_cast<std::chrono::milliseconds>(stop - start).count();
+    elapsed_times.push_back({granularity, elapsed_time});
+  }
+
+  // Save the elapsed times to a file
+  std::ofstream out("elapsed_times.txt");
   if (!out) {
     std::cout << "Failed to open file for writing" << std::endl;
     return 1;
   }
-  
-  auto start = std::chrono::high_resolution_clock::now();
-  tbb::parallel_for(0, display_height, [&](int row) {
-    for (int column = 0; column != display_width; ++column) {
-      auto k = mandelbrot(top_left + Complex{delta_x * column, delta_y * row});
-      image.setPixel(column, row, to_color(k));
-      // Write the result to the file
-      out << k << " ";
-    }
-    out << std::endl; // Add a newline after each row
-  });
-  
-  auto stop = std::chrono::high_resolution_clock::now();
-  auto elapsed_time = std::chrono::duration_cast<std::chrono::milliseconds>(stop - start).count();
-  std::cout << "Elapsed time: " << elapsed_time << " milliseconds" << std::endl;
-  
-  // Close the file
+
+  for (auto const& [granularity, time] : elapsed_times) {
+    out << granularity << " " << time << std::endl;
+  }
+
   out.close();
+
   
   // Save the image to a file
   if (!image.saveToFile("image.png")) {
