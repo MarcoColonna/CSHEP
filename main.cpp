@@ -103,7 +103,7 @@ int main()
       image.saveToFile(namefile);
     }
   }
-
+/*
   sf::RenderWindow window(sf::VideoMode(display_width, display_height),
                           "Mandelbrot Set");
   window.setFramerateLimit(60);
@@ -113,7 +113,7 @@ int main()
   sprite.setTexture(texture);
   window.draw(sprite);
   window.display();
-
+*/
   std::vector<int> grains;
   std::vector<double> times;
   std::ofstream out("Time_vs_grain_size.txt", std::ios::out);
@@ -129,7 +129,7 @@ int main()
 
   out<<"\nThe minimum execution time ("<<times[std::distance(times.begin(), minimum_time)]<<" ms) corresponds to a grain size of "<<grains[std::distance(times.begin(), minimum_time)]<<'.';
   out.close();
-
+/*
   while (window.isOpen())
   {
     sf::Event event;
@@ -176,5 +176,5 @@ int main()
 
     using namespace std::chrono_literals;
     std::this_thread::sleep_for(15ms);
-  }
+  }*/
 }
