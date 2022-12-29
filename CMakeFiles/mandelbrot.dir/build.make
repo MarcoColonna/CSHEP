@@ -93,7 +93,6 @@ mandelbrot_EXTERNAL_OBJECTS =
 mandelbrot: CMakeFiles/mandelbrot.dir/main.cpp.o
 mandelbrot: CMakeFiles/mandelbrot.dir/build.make
 mandelbrot: /usr/lib/x86_64-linux-gnu/libsfml-graphics.so.2.5.1
-mandelbrot: /usr/lib/x86_64-linux-gnu/libtbb.so.12.5
 mandelbrot: /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.5.1
 mandelbrot: /usr/lib/x86_64-linux-gnu/libsfml-system.so.2.5.1
 mandelbrot: CMakeFiles/mandelbrot.dir/link.txt

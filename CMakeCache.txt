@@ -242,6 +242,9 @@ mandelbrot_IS_TOP_LEVEL:STATIC=ON
 //Value Computed by CMake
 mandelbrot_SOURCE_DIR:STATIC=/home/marco/Documenti/IMAPP/CSHEP/4_Giacomini/Progetto
 
+//The directory containing a CMake configuration file for oneTBB.
+oneTBB_DIR:PATH=oneTBB_DIR-NOTFOUND
+
 
 ########################
 # INTERNAL cache entries
