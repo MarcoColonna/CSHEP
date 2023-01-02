@@ -1,3 +1,0 @@
-/home/marco/Documenti/IMAPP/CSHEP/4_Giacomini/Progetto/build/CMakeFiles/mandelbrot.dir
-/home/marco/Documenti/IMAPP/CSHEP/4_Giacomini/Progetto/build/CMakeFiles/edit_cache.dir
-/home/marco/Documenti/IMAPP/CSHEP/4_Giacomini/Progetto/build/CMakeFiles/rebuild_cache.dir
