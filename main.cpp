@@ -55,7 +55,7 @@ int main()
   image.create(display_width, display_height);
 
   // Vary the grain size of the parallel_for loop
-  for (int grain_size = 1; grain_size <= display_height*2; grain_size < 10 ? ++grain_size : grain_size+=50 )
+  for (int grain_size = 1; grain_size <= display_height*2; grain_size < 50 ? grain_size+=5 : grain_size+=50 )
   {
     // Measure the time taken to process the image
     auto start = std::chrono::high_resolution_clock::now();
