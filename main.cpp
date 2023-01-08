@@ -101,17 +101,6 @@ int main()
       image.saveToFile(namefile);
     }
   }
-/*
-  sf::RenderWindow window(sf::VideoMode(display_width, display_height),
-                          "Mandelbrot Set");
-  window.setFramerateLimit(60);
-
-  window.clear();   
-  texture.loadFromImage(image);
-  sprite.setTexture(texture);
-  window.draw(sprite);
-  window.display();
-*/
   std::vector<int> grains;
   std::vector<double> times;
   std::ofstream out("Time_vs_grain_size.txt", std::ios::out);
@@ -127,52 +116,4 @@ int main()
 
   out<<"\nThe minimum execution time ("<<times[std::distance(times.begin(), minimum_time)]<<" ms) corresponds to a grain size of "<<grains[std::distance(times.begin(), minimum_time)]<<'.';
   out.close();
-/*
-  while (window.isOpen())
-  {
-    sf::Event event;
-    while (window.pollEvent(event))
-    {
-      if (event.type == sf::Event::Closed)
-        window.close();
-      if (event.type == sf::Event::KeyPressed)
-      {
-        if (event.key.code == sf::Keyboard::P)
-        {
-          std::string output_file{""};
-          std::cout << "Please insert the name of the png file where you want to save the image: ";
-          std::cin >> output_file;
-          if (output_file.size() > 5)
-          {
-            if (!output_file.compare(output_file.size() - 4, 4, static_cast<std::string>(".png")))
-            {
-              image.saveToFile(output_file);
-            }
-            else
-            {
-              output_file += static_cast<std::string>(".png");
-              image.saveToFile(output_file);
-            }
-          }
-          else
-          {
-            output_file += static_cast<std::string>(".png");
-            image.saveToFile(output_file);
-          }
-          std::cout << "Image saved as \"" << output_file << "\"." << std::endl;
-        }
-      }
-    }
-
-    window.setKeyRepeatEnabled(false);
-
-    window.clear();
-
-    window.draw(sprite);
-
-    window.display();
-
-    using namespace std::chrono_literals;
-    std::this_thread::sleep_for(15ms);
-  }*/
 }
