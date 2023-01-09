@@ -121,7 +121,7 @@ int main()
         // image
         if (grain_size != display_height && !(grain_size % 200))
         {
-            std::string namefile = std::string("Mandelbrot_at_") + std::to_string(grain_size)
+            std::string namefile = std::string("Mandelbrot_gs_") + std::to_string(grain_size)
                 + std::string(".png"); // Create a file name using the current grain size
             auto color = grain_size / 200.0;
             tbb::parallel_for(tbb::blocked_range2d<int>(
@@ -148,9 +148,9 @@ int main()
 
     // This code block creates an output file and writes the grain size and
     // elapsed time for each iteration to it
-    std::ofstream out("Time_vs_grain_size.txt",
-        std::ios::out); // Create an output file named "Time_vs_grain_size.txt"
-    out << "Grain size and execution time obtained\n\nGrain size\tExecution time "
+    std::ofstream file("Time_vs_grain_size.txt",
+        std::ios::file); // Create an output file named "Time_vs_grain_size.txt"
+    file << "Grain size and execution time\n\nGrain size\tExecution time "
            "[ms]\n\n"; // Write a header to the file
 
     // Iterate through the elapsed_times vector, extracting the grain size and
@@ -160,7 +160,7 @@ int main()
         grains.push_back(grain_size); // Add the grain size to the grains vector
         times.push_back(
             elapsed_time / 1000.); // Add the elapsed time in milliseconds to the times vector
-        out << grain_size << "\t\t" << elapsed_time / 1000.
+        file << grain_size << "\t\t" << elapsed_time / 1000.
             << '\n'; // Write the grain size and elapsed time to the file
     }
 
@@ -169,13 +169,13 @@ int main()
 
     // Print the minimum elapsed time and corresponding grain size to the console
     // and to the output file
-    std::cout << "\nThe minimum time of " << times[std::distance(times.begin(), minimum_time)]
-              << " ms corresponding to a grain size of "
+    std::cout << "\nThe minimum time  " << times[std::distance(times.begin(), minimum_time)]
+              << " ms correspons to the grain size "
               << grains[std::distance(times.begin(), minimum_time)] << ".\n\n";
-    out << "\nThe minimum execution time (" << times[std::distance(times.begin(), minimum_time)]
-        << " ms) corresponds to a grain size of "
+    file << "\nThe minimum execution time " << times[std::distance(times.begin(), minimum_time)]
+        << " ms) corresponds to the grain size "
         << grains[std::distance(times.begin(), minimum_time)] << '.';
 
-    out.close(); // Close the output file
+    file.close(); // Close the output file
 }
 
