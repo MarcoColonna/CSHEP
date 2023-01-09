@@ -148,8 +148,8 @@ int main()
 
     // This code block creates an output file and writes the grain size and
     // elapsed time for each iteration to it
-    std::ofstream file("Time_vs_grain_size.txt",
-        std::ios::file); // Create an output file named "Time_vs_grain_size.txt"
+    std::ofstream file("T_vs_gs.txt",
+        std::ios::out); // Create an output file
     file << "Grain size and execution time\n\nGrain size\tExecution time "
            "[ms]\n\n"; // Write a header to the file
 
